@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /compost-bin-sign-printable/
+Sitemap: https://tatyanazaiceva76.github.io/compost-bin-sign-printable/sitemap.xml

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="Make printable compost bin signs from your own verified accepted and excluded lists, measured sizes and copy counts, then download one local PDF.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; font-src 'none'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <title>Printable compost bin signs - custom PDF sign maker</title>
+  <link rel="canonical" href="https://tatyanazaiceva76.github.io/compost-bin-sign-printable/">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="google-site-verification" content="fxav4NFuUbsVKkkGCwAQyVzlPy7XdI-itFY_XiKmodE" />
+</head>
+<body>
+  <header class="site-header">
+    <p class="eyebrow">Browser-local sign maker</p>
+    <h1>Printable compost bin signs</h1>
+    <p>Build a matching PDF sign set from accepted and excluded rules you have already verified with your own collector or operator. The tool lays out your text; it does not decide what belongs in a bin.</p>
+  </header>
+  <main>
+    <section class="panel instructions" aria-labelledby="instructions-title">
+      <h2 id="instructions-title">Three steps</h2>
+      <ol>
+        <li>Enter each bin title and your confirmed accepted/excluded lines.</li>
+        <li>Choose paper, orientation, measured sign size and copies.</li>
+        <li>Confirm the rules, generate the shared preview/PDF layout, then download.</li>
+      </ol>
+      <p><a href="method.html">Method, privacy, limits and third-party licenses</a></p>
+    </section>
+
+    <section class="panel" aria-labelledby="measured-set-title">
+      <h2 id="measured-set-title">Make one consistent, measured sign set</h2>
+      <p>Enter one to eight bin titles, your own accepted and excluded lines, and the number of copies needed for each sign. Choose A4 or Letter paper, portrait or landscape orientation, and the sign width and height you measured. The result is one ordered PDF containing every requested copy, plus editable project JSON you can save and import later.</p>
+      <p>Preview and PDF use the same Noto Sans layout and trim-mark geometry. Text is never silently shortened or squeezed: unsupported characters, unsafe dimensions and content that will not fit are refused with an explicit error. Before posting a sign, print a test at 100%, measure the printed box, and confirm the wording with the collector or operator responsible for your location.</p>
+      <p>Project data stays in this browser. Packaged scripts and font bytes load from the same origin; the tool sends no project data to third parties and uses no accounts, analytics or persistent storage.</p>
+    </section>
+
+    <form id="project-form" class="panel" novalidate>
+      <fieldset>
+        <legend>Page and sign</legend>
+        <div class="grid settings-grid">
+          <label>Paper
+            <select id="paper" name="paper"><option value="A4">A4</option><option value="LETTER">Letter</option></select>
+          </label>
+          <label>Orientation
+            <select id="orientation" name="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select>
+          </label>
+          <label>Sign width (mm)
+            <input id="sign-width" name="signWidthMm" type="number" min="60" step="0.1" value="170" required>
+          </label>
+          <label>Sign height (mm)
+            <input id="sign-height" name="signHeightMm" type="number" min="60" step="0.1" value="245" required>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="section-heading-row">
+        <h2>Bins</h2>
+        <button id="add-bin" type="button" class="secondary">Add bin</button>
+      </div>
+      <div id="bin-list" class="bin-list"></div>
+
+      <label class="confirm-row">
+        <input id="confirmation" type="checkbox">
+        I verified these rules with my own collector or operator. I understand this tool supplies no regional sorting advice.
+      </label>
+
+      <div class="button-row">
+        <button id="generate" type="submit">Generate preview and PDF</button>
+        <button id="use-demo" type="button" class="secondary">Use neutral demo</button>
+        <button id="reset-project" type="button" class="secondary">Reset</button>
+      </div>
+      <div class="button-row compact">
+        <button id="export-json" type="button" class="secondary">Export project JSON</button>
+        <label class="file-button">Import project JSON<input id="import-json" type="file" accept="application/json,.json"></label>
+      </div>
+      <p id="error" class="error" role="alert" hidden></p>
+    </form>
+
+    <section class="panel output" aria-labelledby="output-title">
+      <div class="section-heading-row">
+        <h2 id="output-title">Preview</h2>
+        <button id="download-pdf" type="button" disabled>Download PDF</button>
+      </div>
+      <p id="summary">No current result. Any edit invalidates the prior preview and download.</p>
+      <div id="preview" class="preview" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer><p>Project data and PDF generation stay in this browser. The page loads its packaged static assets from the same origin; it sends no project data to third parties and uses no uploads, accounts, analytics, cookies or persistent storage.</p></footer>
+  <script src="pdf-lib.min.js"></script>
+  <script src="fontkit.umd.min.js"></script>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
